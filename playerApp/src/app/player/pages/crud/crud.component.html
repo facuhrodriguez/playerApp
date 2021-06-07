@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="text-left title-player-screen">Player's Screen</h1>
+  <div class="row" *ngIf="players && players.length > 0 else noPlayerData">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">NickName</th>
+          <th scope="col">Position</th>
+          <th scope="col">More details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of players">
+          <td>{{player.name}}</td>
+          <td>{{player.surname}}</td>
+          <td>{{player.nickName}}</td>
+          <td>{{player.position}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<ng-template #noPlayerData>
+  <h3> No players data</h3>
+  <div class="spinner-border text-danger" role="status">
+  </div>
+
+</ng-template>
