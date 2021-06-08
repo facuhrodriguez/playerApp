@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h4 class="modal-title">Nuevo jugador</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="formData" action="onSubmit()">
+    <div class="form-group row">
+      <label for="name" class="col-sm-1 col-form-label">Nombre</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" formControlName="name">
+      </div>
+      <label for="surname" class="col-sm-1 col-form-label">Apellido</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" formControlName="surname">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="nickName" class="col-sm-1 col-form-label">Apodo</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" formControlName="nickName">
+      </div>
+      <label for="position" class="col-sm-1 col-form-label">Posición</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" formControlName="position">
+      </div>
+    </div>
+    <h3>Información del Equipo</h3>
+    <div class="form-group row">
+      <label for="nickName" class="col-sm-1 col-form-label">Apodo</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" formControlName="nickName">
+      </div>
+      <label for="position" class="col-sm-1 col-form-label">Posición</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" formControlName="position">
+      </div>
+    </div>
+
+
+  </form>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

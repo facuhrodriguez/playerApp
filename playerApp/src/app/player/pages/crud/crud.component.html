@@ -2,7 +2,7 @@
   <h1 class="text-left title-player-screen">Player's Screen</h1>
   <div *ngIf="!isLoading else loading">
     <div class="btns-header">
-      <button class="btn btn-primary">+ Player</button>
+      <button class="btn btn-primary" (click)="onAddPlayer()">+ Player</button>
     </div>
     <div class=" row-table row">
       <table class="table">

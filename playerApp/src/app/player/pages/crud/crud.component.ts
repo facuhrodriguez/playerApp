@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlayerI } from 'src/app/shared/interfaces/player-i';
+import { ModalCreateComponent } from '../../modals/modal-create.component';
 import { PlayerService } from '../../services/player.service';
 
 @Component({
@@ -11,7 +13,7 @@ import { PlayerService } from '../../services/player.service';
 export class CrudComponent implements OnInit {
   public players: PlayerI[] = [];
   public isLoading: boolean = true;
-  constructor(private playerService: PlayerService, private router: Router) { }
+  constructor(private playerService: PlayerService, private router: Router, private modalCreate: NgbModal) { }
 
   ngOnInit(): void {
     this.loadData();
@@ -41,6 +43,10 @@ export class CrudComponent implements OnInit {
       (error: Error) => {
         console.log(error);
       })
+  }
+
+  public onAddPlayer(): void {
+    this.modalCreate.open(ModalCreateComponent, { size: 'xl' });
   }
 
 }

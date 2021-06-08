@@ -5,16 +5,21 @@ import { PlayerRoutingModule } from './player-routing.module';
 import { PlayerService } from './services/player.service';
 import { CrudComponent } from './pages/crud/crud.component';
 import { ListComponent } from './pages/list/list.component';
+import { ModalCreateComponent } from './modals/modal-create.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     CrudComponent,
-    ListComponent
+    ListComponent,
+    ModalCreateComponent,
   ],
   imports: [
     CommonModule,
-    PlayerRoutingModule
+    FormsModule,
+    ReactiveFormsModule,
+    PlayerRoutingModule,
   ],
   providers: [PlayerService]
 })
