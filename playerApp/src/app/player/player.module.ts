@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { PlayerRoutingModule } from './player-routing.module';
 import { PlayerService } from './services/player.service';
 import { CrudComponent } from './pages/crud/crud.component';
+import { ListComponent } from './pages/list/list.component';
 
 
 @NgModule({
   declarations: [
-    CrudComponent
+    CrudComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,

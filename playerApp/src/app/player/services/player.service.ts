@@ -33,4 +33,19 @@ export class PlayerService {
   public create() {
   }
 
+  public deleteById(_id: string): Observable<void> {
+    const subject = new Subject<void>();
+    this.http.delete(this.url + `${_id}`).subscribe(() => {
+      subject.next();
+    },
+      (error: Error) => {
+        subject.error(error);
+      },
+      () => {
+        subject.complete();
+      })
+
+    return subject.asObservable();
+  }
+
 }

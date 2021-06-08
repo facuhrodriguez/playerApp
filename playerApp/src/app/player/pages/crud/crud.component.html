@@ -1,33 +1,48 @@
 <div class="container">
   <h1 class="text-left title-player-screen">Player's Screen</h1>
-  <div class="row" *ngIf="players && players.length > 0 else noPlayerData">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Surname</th>
-          <th scope="col">NickName</th>
-          <th scope="col">Position</th>
-          <th scope="col">More details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let player of players">
-          <td>{{player.name}}</td>
-          <td>{{player.surname}}</td>
-          <td>{{player.nickName}}</td>
-          <td>{{player.position}}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div *ngIf="!isLoading else loading">
+    <div class="btns-header">
+      <button class="btn btn-primary">+ Player</button>
+    </div>
+    <div class=" row-table row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">NickName</th>
+            <th scope="col">Position</th>
+            <th scope="col">More details</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody *ngIf="(players && players.length > 0) else noPlayerData">
+          <tr *ngFor="let player of players">
+            <td>{{player.name}}</td>
+            <td>{{player.surname}}</td>
+            <td>{{player.nickName}}</td>
+            <td>{{player.position}}</td>
+            <td><button class="btn btn-link" (click)="onMoreDetails(player._id)">More Details</button></td>
+            <td><button (click)="onDelete(player._id)"></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
 
 
-<ng-template #noPlayerData>
-  <h3> No players data</h3>
+<ng-template #loading>
   <div class="spinner-border text-danger" role="status">
   </div>
+</ng-template>
 
+<ng-template #noPlayerData>
+  <tbody>
+    <tr>
+      <td class="no-player-td" colspan="5">No player's information</td>
+    </tr>
+  </tbody>
 </ng-template>

@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CrudComponent } from './pages/crud/crud.component';
+import { ListComponent } from './pages/list/list.component';
 
 const routes: Routes = [
-  { path: '', component: CrudComponent }
+  { path: '', component: CrudComponent },
+  { path: ':id', component: ListComponent }
 ];
 
 @NgModule({
