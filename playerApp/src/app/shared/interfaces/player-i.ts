@@ -1,5 +1,5 @@
 export interface PlayerI {
-  _id: string,
+  _id?: string,
   name: string,
   surname: string,
   nickName: string,

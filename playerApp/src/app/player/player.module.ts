@@ -7,6 +7,7 @@ import { CrudComponent } from './pages/crud/crud.component';
 import { ListComponent } from './pages/list/list.component';
 import { ModalCreateComponent } from './modals/modal-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
+    FontAwesomeModule,
     ReactiveFormsModule,
     PlayerRoutingModule,
   ],

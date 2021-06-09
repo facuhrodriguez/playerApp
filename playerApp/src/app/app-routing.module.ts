@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'player', pathMatch: 'full' },
   {
     path: 'player', loadChildren: async () => {
       const m = await import("./player/player.module");

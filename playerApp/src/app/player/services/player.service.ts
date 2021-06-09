@@ -30,7 +30,19 @@ export class PlayerService {
     return subject.asObservable();
   }
 
-  public create() {
+  public create(playerData: PlayerI): Observable<PlayerI> {
+    const subject = new Subject<PlayerI>();
+    this.http.post<PlayerI>(this.url, { playerData }).subscribe((playerData: PlayerI) => {
+      subject.next(playerData);
+    },
+      (error: Error) => {
+        subject.error(error);
+      },
+      () => {
+        subject.complete();
+      })
+
+    return subject.asObservable();
   }
 
   public deleteById(_id: string): Observable<void> {
