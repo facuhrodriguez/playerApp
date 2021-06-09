@@ -7,6 +7,9 @@ th {
   text-align: center;
 }
 
+.td-button button {
+  padding-top: 0%;
+}
 .no-player-td {
   text-align: left;
   font-size: 1.5rem;

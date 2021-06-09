@@ -30,6 +30,22 @@ export class PlayerService {
     return subject.asObservable();
   }
 
+
+  public findById(playerId: string): Observable<PlayerI> {
+    const subject = new Subject<PlayerI>();
+    this.http.get<PlayerI>(this.url + `${playerId}`).subscribe((player: PlayerI) => {
+      subject.next(player);
+    },
+      (error: Error) => {
+        subject.error(error);
+      },
+      () => {
+        subject.complete();
+      })
+
+    return subject.asObservable();
+  }
+
   public create(playerData: PlayerI): Observable<PlayerI> {
     const subject = new Subject<PlayerI>();
     this.http.post<PlayerI>(this.url, { playerData }).subscribe((playerData: PlayerI) => {

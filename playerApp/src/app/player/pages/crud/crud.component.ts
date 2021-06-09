@@ -5,6 +5,7 @@ import { PlayerI } from 'src/app/shared/interfaces/player-i';
 import { ModalCreateComponent } from '../../modals/modal-create.component';
 import { PlayerService } from '../../services/player.service';
 import { faTrash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { BreadCumbI } from 'src/app/shared/interfaces/breadcumb-i';
 @Component({
   selector: 'app-crud',
   templateUrl: './crud.component.html',
@@ -12,6 +13,16 @@ import { faTrash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 })
 export class CrudComponent implements OnInit {
   public players: PlayerI[] = [];
+  public breadCumb: BreadCumbI[] = [{
+    url: '',
+    name: 'Home',
+    active: false
+  },
+  {
+    url: '/player',
+    name: 'Player',
+    active: true
+  }]
   public trashIcon: IconDefinition = faTrash;
   public isLoading: boolean = true;
   constructor(private playerService: PlayerService, private router: Router, private modalCreate: NgbModal) { }
@@ -38,21 +49,31 @@ export class CrudComponent implements OnInit {
       this.router.navigateByUrl(`/player/${playerId}`);
   }
 
-  public onDelete(playerId: string = ""): void {
-    if (playerId != "")
+  public onDeletePlayer(playerId: string = ""): void {
+    if (playerId != "") {
+      this.isLoading = true;
       this.playerService.deleteById(playerId).subscribe(() => {
         this.loadData();
       },
         (error: Error) => {
           console.log(error);
         })
+    }
+
+  }
+
+  public onEditPlayer(playerId: string = ""): void {
+    // if (playerId != "")
+    // this.playerService.
   }
 
   public onAddPlayer(): void {
     const modalCreate: NgbModalRef = this.modalCreate.open(ModalCreateComponent, { size: 'lg' });
     modalCreate.result.then((playerData: PlayerI) => {
       if (playerData) {
+        this.isLoading = true;
         this.playerService.create(playerData).subscribe((newPlayer: PlayerI) => {
+
           this.loadData();
           // @TODO: Add Toast config
         },

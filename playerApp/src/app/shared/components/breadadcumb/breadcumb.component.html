@@ -1,0 +1,9 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb" *ngIf="breadcumb.length > 0">
+    <ng-template ngFor let-bread [ngForOf]="breadcumb">
+      <li class="breadcrumb-item" [ngClass]="{'active': bread.active}" aria-current="page">
+        <a routerLink='{{bread.url}}' routerLinkActive=" router-link-active">{{bread.name}}</a>
+      </li>
+    </ng-template>
+  </ol>
+</nav>

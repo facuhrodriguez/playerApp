@@ -1,1 +1,28 @@
-<p> works! </p>
+<app-breadcumb [breadcumb]="breadcumbs"></app-breadcumb>
+
+<div class="container col-sm-9" *ngIf="player else noPlayerData">
+  <h3 class="title-player-screen">Jugador {{player.name}}</h3>
+  <section class="player-info">
+    <div class="row">
+      <p class="col-sm-4"><span class="player-attribute">Nombre Completo:</span> {{player.surname}}, {{player.name}}</p>
+      <p class="col-sm-4"><span class="player-attribute">Edad:</span>{{player.age}}</p>
+      <p class="col-sm-4"><span class="player-attribute">Apodo:</span> {{player.surname}}, {{player.name}}</p>
+    </div>
+    <div class="row">
+      <p class="col-sm-4"><span class="player-attribute">Posición: </span>{{player.position}}</p>
+      <p class="col-sm-4"><span class="player-attribute">Nacionalidad:</span>{{player.country}}</p>
+      <p class="col-sm-4"><span class="player-attribute">Valor de mercado:</span>{{player.value}}</p>
+    </div>
+    <h4 class="player-info">Información del equipo</h4>
+    <div class="row player-info">
+      <p class="col-sm-4"><span class="player-attribute">Nombre: </span>{{player.team.name}}</p>
+      <p class="col-sm-4"><span class="player-attribute">Alias:</span>{{player.team.nickName}}</p>
+      <p class="col-sm-4"><span class="player-attribute">Lugar:</span>{{player.team.place.country}},
+        {{player.team.place.city}}</p>
+    </div>
+  </section>
+</div>
+
+<ng-template #noPlayerData>
+  <h3>Jugador no existente</h3>
+</ng-template>

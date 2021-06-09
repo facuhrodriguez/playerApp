@@ -7,9 +7,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BreadcumbComponent } from './shared/components/breadadcumb/breadcumb.component';
+import { ToastComponent } from './shared/components/toast/toast.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
@@ -17,8 +20,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    FontAwesomeModule,
     NgbModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
