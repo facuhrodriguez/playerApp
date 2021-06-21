@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlayerI } from 'src/app/shared/interfaces/player-i';
@@ -11,11 +11,16 @@ import { PlayerI } from 'src/app/shared/interfaces/player-i';
 })
 export class ModalCreateComponent implements OnInit {
   public formData: FormGroup = new FormGroup({});
+  private player: PlayerI | undefined;
   constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.initForm();
+  }
+
+  public setPlayer(player: PlayerI) {
+    this.player = player;
   }
 
   public onSubmit(): void {
@@ -36,23 +41,24 @@ export class ModalCreateComponent implements OnInit {
         }
       },
     }
+    console.log(playerData);
     this.activeModal.close(playerData);
   }
 
   private initForm(): void {
     this.formData = this.fb.group({
-      name: new FormControl([''], Validators.required),
-      surname: new FormControl([''], Validators.required),
-      nickName: new FormControl(['']),
-      position: new FormControl([''], Validators.required),
-      age: new FormControl([''], [Validators.required, Validators.min(10)]),
-      country: new FormControl(['']),
-      value: new FormControl(['']),
+      name: new FormControl(this.player ? this.player.name : '', Validators.required),
+      surname: new FormControl(this.player ? this.player.surname : '', Validators.required),
+      nickName: new FormControl(this.player ? this.player.nickName : ''),
+      position: new FormControl(this.player ? this.player.position : '', Validators.required),
+      age: new FormControl(this.player ? this.player.age : '', [Validators.required, Validators.min(10)]),
+      country: new FormControl(this.player ? this.player.country : ''),
+      value: new FormControl(this.player ? this.player.value : ''),
       team: this.fb.group({
-        name: new FormControl(['']),
-        nickName: new FormControl(['']),
-        city: new FormControl(['']),
-        country: new FormControl([''])
+        name: new FormControl(this.player ? this.player.team.name : ''),
+        nickName: new FormControl(this.player ? this.player.team.nickName : ''),
+        city: new FormControl(this.player ? this.player.team.place.city : ''),
+        country: new FormControl(this.player ? this.player.team.place.country : '')
       })
     })
   }

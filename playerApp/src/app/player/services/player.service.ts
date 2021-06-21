@@ -76,4 +76,19 @@ export class PlayerService {
     return subject.asObservable();
   }
 
+
+  public updateById(_id: string | undefined, playerData: PlayerI): Observable<PlayerI> {
+    const subject = new Subject<PlayerI>();
+    this.http.put(this.url + `${_id}`, { playerData }).subscribe(() => {
+      subject.next();
+    },
+      (error: Error) => {
+        subject.error(error);
+      },
+      () => {
+        subject.complete();
+      })
+
+    return subject.asObservable();
+  }
 }

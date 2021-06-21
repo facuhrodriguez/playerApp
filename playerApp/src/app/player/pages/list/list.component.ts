@@ -22,12 +22,12 @@ export class ListComponent implements OnInit {
       active: false
     },
     {
-      name: 'Players',
+      name: 'Jugadores',
       url: '/player',
       active: false
     },
     {
-      name: 'Details',
+      name: 'Detalles',
       url: '#',
       active: true
     }

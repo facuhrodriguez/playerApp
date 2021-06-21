@@ -30,8 +30,11 @@
             <td class="td-button"><button class="btn" (click)="onDeletePlayer(player._id)">
                 <fa-icon [icon]="trashIcon"></fa-icon>
               </button></td>
-            <td><button (click)="onEditPlayer(player._id)"></button></td>
-
+            <td class="td-button">
+              <button class="btn" (click)="onEditPlayer(player)">
+                <fa-icon [icon]="faEdit"></fa-icon>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -49,7 +52,7 @@
 <ng-template #noPlayerData>
   <tbody>
     <tr>
-      <td class="no-player-td" colspan="5">No existen jugadores aún</td>
+      <td class="no-player-td" colspan="7">No existen jugadores aún</td>
     </tr>
   </tbody>
 </ng-template>
